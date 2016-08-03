@@ -58,6 +58,8 @@ class Input extends React.Component {
       case 13: // ENTER
         event.preventDefault();
         this.props.onSelect();
+        // GEO-ENTER-FUNCTIONALITY
+        _this.props.onEnter();
         break;
       case 9: // TAB
         if (!this.props.ignoreTab) {
