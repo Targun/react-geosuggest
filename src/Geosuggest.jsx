@@ -125,6 +125,9 @@ class Geosuggest extends React.Component {
   onPrev = () => this.activateSuggest('prev')
 
   onSelect = () => this.selectSuggest(this.state.activeSuggest)
+  
+  // GEO-ENTER-FUNCTIONALITY
+  onEnter = () => this.props.onEnterPress()
 
   onSuggestMouseDown = () => this.setState({ignoreBlur: true})
 
@@ -389,6 +392,8 @@ class Geosuggest extends React.Component {
         onNext={this.onNext}
         onPrev={this.onPrev}
         onSelect={this.onSelect}
+        // GEO-ENTER-FUNCTIONALITY
+        onEnter={this.onEnter}
         onEscape={this.hideSuggests} {...attributes} />,
       suggestionsList = <SuggestList isHidden={this.state.isSuggestsHidden}
         style={this.props.style.suggests}
