@@ -53,15 +53,22 @@ export default class SuggestList extends React.Component {
       {this.props.suggests.map(suggest => {
         const isActive = this.props.activeSuggest &&
           suggest.placeId === this.props.activeSuggest.placeId;
+          
+        if(suggest.label.substr(suggest.label.length - 13) === "United States"){
+          suggest.label = suggest.label.substring(0, suggest.label.length - 15);
+        }
+        if(!isNaN(suggest.label[0])){
 
-        return <SuggestItem key={suggest.placeId}
-          className={suggest.className}
-          suggest={suggest}
-          style={this.props.suggestItemStyle}
-          isActive={isActive}
-          onMouseDown={this.props.onSuggestMouseDown}
-          onMouseOut={this.props.onSuggestMouseOut}
-          onSelect={this.props.onSuggestSelect} />;
+          return <SuggestItem key={suggest.placeId}
+            className={suggest.className}
+            suggest={suggest}
+            style={this.props.suggestItemStyle}
+            isActive={isActive}
+            onMouseDown={this.props.onSuggestMouseDown}
+            onMouseOut={this.props.onSuggestMouseOut}
+            onSelect={this.props.onSuggestSelect} />;
+            
+        }
       })}
     </ul>;
   }
